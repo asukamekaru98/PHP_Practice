@@ -1,3 +1,15 @@
+<?php
+function price($tanka,$kosu){
+    $soryo = 250;
+    $ryokin = $tanka * $kosu;
+    if($ryokin < 5000){
+        $ryokin += $soryo;
+    }
+    return $ryokin;
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,16 +29,6 @@ $kingaku2 = price(1200,5);
 echo "{$kingaku2}円";
 ?>
 
-<?php
-function price($tanka,$kosu){
-    $soryo = 250;
-    $ryokin = $tanka * $kosu;
-    if($ryokin < 5000){
-        $ryokin += $soryo;
-    }
-    return $ryokin;
-}
-?>
 
     </body>
 </html>
