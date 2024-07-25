@@ -11,6 +11,28 @@
     <div>
         <?php
 
+        require_once("../../lib/util.php");
+        //文字コード検証
+        if (!cken($_POST)) {
+            $encoding = mb_internal_encoding();
+            $err = "Encoding Error!" . $encoding;
+            exit($err);
+        }
+        //HTML escape
+        $_POST = es($_POST);
+        ?>
+
+        <!--合計金額チェック-->
+        <?php
+        if (isset($_POST['kosu'])) {
+            $kosu = $_POST['kosu'];
+        } else {
+            $kosu = "";
+        }
+        ?>
+
+        <?php
+
         $discount = 0.8;
         $off = (1 - $discount) * 100;
         if ($discount > 0) {
@@ -26,7 +48,7 @@
             <input type="hidden" name="tanka" value="<?php echo $tanka; ?>">
             <ul>
                 <li><label>単価:<?php echo $tanka_fmt; ?>円</label></li>
-                <li><label>個数:<input type="number" name="kosu"></label></li>
+                <li><label>個数:<input type="number" name="kosu" value="<?php echo $kosu; ?>"></label></li>
                 <li><input type="submit" value="送信"></li>
             </ul>
         </form>
