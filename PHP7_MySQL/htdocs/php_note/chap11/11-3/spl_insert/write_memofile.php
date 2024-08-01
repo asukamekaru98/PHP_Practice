@@ -14,6 +14,7 @@ $memo = $_POST["memo"];
 //時間取得
 $date = date("Y/n/j G:i:s", time());
 $newdata = $date . " " . $memo;
+
 try {
     $workingfileObj = new SplFileObject("working.tmp", "wb");
     // ファイルロック（排他ロック）
@@ -54,24 +55,10 @@ if (file_exists($filename)) {
 }
 
 $workingfileObj = NULL;
-unlink($filename);
-
-try {
-    // 追記モードでメモファイルを開く
-    $fileObj = new SplFileObject($filename, "a+b");
-} catch (Exception $e) {
-    echo '<span class="error">エラー有り</span><br>';
-    echo $e->getMessage();
-    exit();
-}
-// ファイルロック（排他ロック）
-$fileObj->flock(LOCK_EX);
-// メモ追記
-$result = $fileObj->fwrite($writedata);
-// ファイルアンロック
-$fileObj->flock(LOCK_UN);
+rename("working.tmp", $filename);
 
 // リダイレクト（メモを読むページへ。）
 $url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+header("HTTP/1.1 303 See Other");
 header("Location:" . $url . "/read_memofile.php");
 exit();
