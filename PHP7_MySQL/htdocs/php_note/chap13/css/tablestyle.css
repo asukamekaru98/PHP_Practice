@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+table {
+	margin: 2em;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+thead {
+	background-color: #7ac2ff;
+	text-align: center;
+}
+
+tr *{
+	padding: : 0.5em 1em 0.5em 1em;
+}
+
+tbody tr *:first-child{
+	width: 4em;
+	text-align: left;
+}
+
+tbody tr *:nth-child(2){
+	width: 10em;
+	text-align: left;
+}
+
+tbody tr *:nth-child(3){
+	width: 4em;
+	text-align: right;;
+}
+
+tbody tr:nth-child(even) td {
+	background-color: #dff0ff;
+}
