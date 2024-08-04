@@ -1,0 +1,9 @@
+<?php
+/*この行はコメント欄*/
+echo "こんにちは";
+/*
+#この産業も
+//
+echo "ありがとう";
+*/
+echo /*comment*/ "sayonara baby";
