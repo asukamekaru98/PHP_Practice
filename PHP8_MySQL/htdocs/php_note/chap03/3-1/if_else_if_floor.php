@@ -1,5 +1,6 @@
 <?php
-$age = 18;
+$age = 15.7;
+$age = floor($age); //端数切り捨て
 
 if ($age < 13) {
     $price = 0;
