@@ -1,7 +1,8 @@
 <?php
 session_start();    // セッション開始
 require_once("../../../lib/util.php");
-
+?>
+<?php
 if (isset($_POST['name'])) {
     $_SESSION['name'] = trim(mb_convert_kana($_POST['name'], "s"));
 }
