@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>名前検索</title>
+    <link href="../../../css/style.css" rel="stylesheet">
+    <link href="../../../css/tablestyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <!-- 入力フォームの作成 -->
+        <form method="post" action="insert_member.php">
+            <ul>
+                <li>
+                    <label>名前:<br>
+                        <input type="text" name="name" placeholder="名前" size="20">
+                    </label>
+                </li>
+                <li>
+                    <label>年齢:<br>
+                        <input type="text" name="age" placeholder="半角数字" size="20">
+                    </label>
+                </li>
+                <li>
+                    <label>性別:<br>
+                        <label><input type="radio" name="sex" value="男" checked>男</label>
+                        <label><input type="radio" name="sex" value="女">女</label>
+                    </label>
+                </li>
+                <li>
+                    <input type="submit" value="追加する">
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+
+</html>
