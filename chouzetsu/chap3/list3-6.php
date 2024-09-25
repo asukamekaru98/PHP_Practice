@@ -22,4 +22,5 @@ class PetShop
 	}
 }
 
-$shop = new PetShop($app, true);
+//$shop = new PetShop($app);		//ログを書く
+$shop = new PetShop($app, true);	//ログを書かない
