@@ -9,7 +9,7 @@ class MathUtilTest extends TestCase
 {
 	public function testSaturate(): void
 	{
-		$mathUtil = new MathUtil();
+		$mathUtil = new MathUtil(new Math);
 
 		// 範囲内ならそのまま
 		$this->assertEquals(2, $mathUtil->saturate(2, 1, 3));

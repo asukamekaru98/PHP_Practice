@@ -11,8 +11,7 @@
     $color = "red";
     ?>
 
-    <?php switch ($color): ?>
-    <?php
+    <?php switch ($color):
         case "green": ?>
             緑は120円<br>
             <?php break; ?>
