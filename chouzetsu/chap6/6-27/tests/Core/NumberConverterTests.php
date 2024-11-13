@@ -19,4 +19,15 @@ class NumberConverterTests extends TestCase
 		$fizzbuzz = new NumberConverter([$rule]);
 		$this->assertEquals('', $fizzbuzz->convert(1));
 	}
+
+	public function testConverterWithFizzBuzzRule()
+	{
+		$fizzbuzz = new NumberConverter([
+			$this->createMockRule(
+				'FizzBuzz',
+				15
+			)
+		]);
+		$this->assertEquals('Fizz', $fizzbuzz->convert(3));
+	}
 }
