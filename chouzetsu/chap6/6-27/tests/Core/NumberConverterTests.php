@@ -2,6 +2,7 @@
 
 namespace FizzBuzz\Core;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class NumberConverterTests extends TestCase
@@ -26,8 +27,24 @@ class NumberConverterTests extends TestCase
 			$this->createMockRule(
 				'FizzBuzz',
 				15
+			),
+			$this->createMockRule(
+				1,
+				"Buzz"
 			)
 		]);
-		$this->assertEquals('Fizz', $fizzbuzz->convert(3));
+		$this->assertEquals('FizzBuzz', $fizzbuzz->convert(3));
+	}
+
+	private function createMockRule(
+		int $expectedNumber,
+		string $replace
+	): ReplaceRuleInterface|MockObject {
+		$rule = $this->createMock(ReplaceRuleInterface::class);
+		$rule->expects($this->atLeastOnce())
+			->method('replace')
+			->with($expectedNumber)
+			->willReturn($replace);
+		return $rule;
 	}
 }
