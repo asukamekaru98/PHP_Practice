@@ -16,4 +16,25 @@ class NumberConverterTest extends TestCase
 		$this->assertEquals('Buzz', $fizzBuzz->convert(5));
 		$this->assertEquals('FizzBuzz', $fizzBuzz->convert(15));
 	}
+
+	public function testConverterWithUnmatchedFizzBuzzRuleAndConstantRule()
+	{
+		$fizzBuzz = new NumberConverter([
+			$this->createMockRule(
+				1,
+				""
+			),
+			$this->createMockRule(
+				1,
+				""
+			),
+			$this->createMockRule(
+				1,
+				"1"
+			),
+		]);
+		$this->assertEquals('1', $fizzBuzz->convert(1));
+	}
+
+	private function createMockRule($number, $returnValue): void {}
 }
