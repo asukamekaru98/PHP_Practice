@@ -1,0 +1,26 @@
+services:
+FizzBuzz\App\FizzBuzzSqquencePrinter:
+public: true
+arguments:
+$fizzBuzz: '@FizzBuzz\Core2\NumberConverter'
+$output: '@FizzBuzz\App\OutputInterface'
+
+FizzBuzz\Core2\NumberConverter:
+arguments:
+$rules:
+- '@fizzbuzz.rule.fizz'
+- '@fizzbuzz.rule.buzz'
+- '@FizzBuzz\Spec2\PassThroughRule'
+
+fizzbuzz.rule.fizz:
+class: FizzBuzz\Spec2\CyclicNumberRule
+arguments: [3,'Fizz']
+
+fizzbuzz.rule.buzz:
+class: FizzBuzz\Spec2\CyclicNumberRule
+arguments: [5,'Buzz']
+
+FizzBuzz\Spec2\PassThroughRule: ~
+
+FizzBuzz\App\OutputInterface:
+class: FizzBuzz\ConsoleOutput

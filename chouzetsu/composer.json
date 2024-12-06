@@ -11,5 +11,10 @@
         "psr-4": {
             "FizzBuzz\\": "tests/"
         }
+    },
+    "require": {
+        "symfony/config": "^6.0",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/yaml": "^6.0"
     }
 }

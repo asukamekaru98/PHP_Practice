@@ -22,6 +22,8 @@ class App
 
 class FizzBuzzAppFactory
 {
+	private ?ReplaceRuleInterface $fizzRule = null;
+
 	public function create(): FizzBuzzSeqencePrinter
 	{
 		return new FizzBuzzSeqencePrinter(
@@ -41,7 +43,10 @@ class FizzBuzzAppFactory
 
 	protected function createFizzRule(): ReplaceRuleInterface
 	{
-		return new CyclicNumberRule(3, "Fizz");
+		if (!$this->fizzRule) {
+			$this->fizzRule = new CyclicNumberRule(3, "Fizz");
+		}
+		return $this->fizzRule;
 	}
 
 	protected function createBuzzRule(): ReplaceRuleInterface
